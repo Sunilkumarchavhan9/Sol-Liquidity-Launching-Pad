@@ -69,11 +69,11 @@ export function CreateCPPool(){
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="min-h-screen bg-white flex justify-center items-center p-4"
+                className="app-shell"
             >
-                <div className="w-full max-w-md">
-                    <motion.div 
-                        className="bg-white shadow-lg p-8 border-4 border-black"
+                <div className="w-full max-w-xl">
+                    <motion.div
+                        className="app-card"
                         whileHover={{ y: -5 }}
                         transition={{ type: "spring", stiffness: 300 }}
                     >
@@ -86,40 +86,40 @@ export function CreateCPPool(){
                             ✅
                         </motion.div>
 
-                        <motion.h1 
-                            className="text-3xl font-bold text-center mb-2 text-black"
+                        <motion.h1
+                            className="mb-2 text-center font-mono text-3xl font-bold text-white"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.3 }}
                         >
                             Pool Created!
                         </motion.h1>
-                        <p className="text-gray-600 text-center mb-8">Your constant product pool is ready</p>
+                        <p className="mb-8 text-center font-mono text-sm text-zinc-300">Your constant product pool is ready</p>
                         
                         <motion.div
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.4 }}
-                            className="space-y-4 mb-8 bg-gray-100 p-6 border-2 border-black"
+                            className="mb-8 space-y-4 rounded-2xl border border-white/20 bg-white/5 p-6"
                         >
                             <div>
-                                <p className="text-sm text-gray-600">Pool Address</p>
-                                <p className="text-black font-mono text-xs break-all font-bold">{poolAddress}</p>
+                                <p className="text-sm text-zinc-300">Pool Address</p>
+                                <p className="break-all font-mono text-xs font-bold text-cyan-100">{poolAddress}</p>
                             </div>
 
                             <div>
-                                <p className="text-sm text-gray-600">Token Pair</p>
-                                <p className="text-black font-bold">{poolStats.tokenA} ↔ {poolStats.tokenB}</p>
+                                <p className="text-sm text-zinc-300">Token Pair</p>
+                                <p className="font-bold text-zinc-100">{poolStats.tokenA} ↔ {poolStats.tokenB}</p>
                             </div>
 
                             <div>
-                                <p className="text-sm text-gray-600">Pool Fee</p>
-                                <p className="text-black font-bold">{poolStats.fee}</p>
+                                <p className="text-sm text-zinc-300">Pool Fee</p>
+                                <p className="font-bold text-zinc-100">{poolStats.fee}</p>
                             </div>
 
                             <div>
-                                <p className="text-sm text-gray-600">Status</p>
-                                <p className="text-black font-bold">Active</p>
+                                <p className="text-sm text-zinc-300">Status</p>
+                                <p className="font-bold text-zinc-100">Active</p>
                             </div>
                         </motion.div>
 
@@ -127,9 +127,9 @@ export function CreateCPPool(){
                             onClick={() => setAddingLiquidity(true)}
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
-                            className="w-full bg-black hover:bg-gray-800 text-white font-bold py-3 transition duration-200 mb-3"
+                            className="app-button-primary mb-3 w-full py-3"
                         >
-                            💧 Add Liquidity
+                            Add Liquidity
                         </motion.button>
 
                         <motion.button 
@@ -139,7 +139,7 @@ export function CreateCPPool(){
                             }}
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
-                            className="w-full bg-gray-300 hover:bg-gray-200 text-black font-bold py-3 transition duration-200 border-2 border-black mb-3"
+                            className="app-button-secondary mb-3 w-full py-3 font-semibold"
                         >
                             View on Explorer
                         </motion.button>
@@ -148,7 +148,7 @@ export function CreateCPPool(){
                             onClick={() => setPoolCreated(false)}
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
-                            className="w-full bg-gray-300 hover:bg-gray-200 text-black font-bold py-3 transition duration-200 border-2 border-black"
+                            className="app-button-secondary w-full py-3 font-semibold"
                         >
                             Create Another Pool
                         </motion.button>
@@ -157,7 +157,7 @@ export function CreateCPPool(){
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.6 }}
-                            className="text-center text-gray-600 text-xs mt-6"
+                            className="mt-6 text-center text-xs text-zinc-300"
                         >
                             Add liquidity to enable token swaps and start earning fees
                         </motion.p>
@@ -172,36 +172,36 @@ export function CreateCPPool(){
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="min-h-screen bg-white flex justify-center items-center p-4"
+            className="app-shell"
         >
-            <div className="w-full max-w-md">
-                <motion.div 
-                    className="bg-white shadow-lg p-8 border-4 border-black"
+            <div className="w-full max-w-xl">
+                <motion.div
+                    className="app-card"
                     whileHover={{ y: -5 }}
                     transition={{ type: "spring", stiffness: 300 }}
                 >
-                    <motion.h1 
-                        className="text-4xl font-bold text-center mb-2 text-black"
+                    <motion.h1
+                        className="text-center font-mono text-4xl font-bold text-white"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.2 }}
                     >
                         Create CP Pool
                     </motion.h1>
-                    <p className="text-gray-600 text-center mb-8">Set up a constant product pool for your token</p>
+                    <p className="mb-8 mt-2 text-center font-mono text-sm text-zinc-300">Set up a constant product pool for your token</p>
                     
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.3 }}
                     >
-                        <label className="block text-sm font-medium text-black mb-2">ALT Token Address</label>
+                        <label className="mb-2 block text-sm font-medium text-zinc-200">ALT Token Address</label>
                         <input 
                             type="text" 
                             placeholder="Enter alternative token mint address"
                             value={altToken}
                             onChange={(e) => setAltToken(e.target.value)}
-                            className="w-full px-4 py-3 bg-gray-100 border-2 border-black text-black placeholder-gray-400 mb-6 focus:outline-none focus:bg-gray-50 transition"
+                            className="app-input mb-6"
                         />
                     </motion.div>
 
@@ -210,19 +210,19 @@ export function CreateCPPool(){
                         disabled={isLoading || !altToken}
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
-                        className="w-full bg-black hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold py-3 transition duration-200 flex items-center justify-center gap-2"
+                        className="app-button-primary flex w-full items-center justify-center gap-2 py-3 disabled:cursor-not-allowed disabled:opacity-50"
                     >
                         {isLoading ? (
                             <>
                                 <motion.div 
                                     animate={{ rotate: 360 }}
                                     transition={{ repeat: Infinity, duration: 1 }}
-                                    className="w-5 h-5 border-2 border-white border-t-transparent"
+                                    className="h-5 w-5 rounded-full border-2 border-black border-t-transparent"
                                 />
                                 Creating...
                             </>
                         ) : (
-                            '✨ Create Pool'
+                            'Create Pool'
                         )}
                     </motion.button>
 
@@ -230,7 +230,7 @@ export function CreateCPPool(){
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.5 }}
-                        className="text-center text-gray-600 text-xs mt-6"
+                        className="mt-6 text-center text-xs text-zinc-300"
                     >
                         This will create a constant product pool (like Uniswap) for your token and the ALT token
                     </motion.p>

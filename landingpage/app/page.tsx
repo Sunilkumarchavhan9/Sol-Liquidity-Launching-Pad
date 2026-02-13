@@ -1,21 +1,16 @@
 
 import Navbar from "./components/navbar";
 import Hero from "./components/herosection";
-import TrustSection from "./components/trustSec";
 import Bt from "./components/bt";
-import SocialProof from "./components/socialProof";
-
-
-
 
 export default function Home() {
+  const backendUrl = process.env.NEXT_PUBLIC_BACKEND_URL ?? "http://localhost:3001";
+
   return (
-    <div>
-      <Navbar/>
-      <Hero/>
-      <Bt/>
-      <TrustSection/>
-      <SocialProof/>
-    </div>
+    <main className="landing-shell">
+      <Navbar backendUrl={backendUrl} />
+      <Hero backendUrl={backendUrl} />
+      <Bt />
+    </main>
   );
 }

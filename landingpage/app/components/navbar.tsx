@@ -2,151 +2,113 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
-import Link from "next/link";
+interface NavbarProps {
+  backendUrl: string;
+}
 
-export default function Navbar(){
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+export default function Navbar({ backendUrl }: NavbarProps) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-    const navLinks = [
-        { name: "Features", href: "#features", isExternal: false },
-        { name: "How It Works", href: "#how-it-works", isExternal: false },
-        { name: "FAQ", href: "#faq", isExternal: false },
-        { name: "Contact", href: "#contact", isExternal: false },
-       
-    ];
+  const navLinks = [
+    { name: "Features", href: "#features" },
+    { name: "How It Works", href: "#how-it-works" },
+    { name: "FAQ", href: "#faq" },
+    { name: "Contact", href: "#contact" },
+  ];
 
-    const scrollToSection = (href: string, isExternal: boolean) => {
-        if (isExternal) {
-            window.location.href = href;
-        } else {
-            const element = document.querySelector(href);
-            element?.scrollIntoView({ behavior: "smooth" });
-            setIsMenuOpen(false);
-        }
-    };
+  const scrollToSection = (href: string) => {
+    const element = document.querySelector(href);
+    element?.scrollIntoView({ behavior: "smooth", block: "start" });
+    setIsMenuOpen(false);
+  };
 
-    return(
-        <motion.nav 
-            initial={{ opacity: 0, y: -50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="sticky top-0 z-50 bg-transparent! backdrop-blur-none! shadow-none! border-none!"
+  return (
+    <motion.nav
+      initial={{ opacity: 0, y: -24 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.45 }}
+      className="sticky top-0 z-50 border-b border-white/10 bg-black/35 backdrop-blur-xl"
+    >
+      <div className="mx-auto flex h-20 max-w-6xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <button
+          onClick={() => scrollToSection("#top")}
+          className="flex items-center gap-3 text-left"
         >
-            <div className="max-w mx-auto px-4 sm:px-6 lg:px-8 ">
-                <div className="flex justify-between items-center h-20">
-                   <svg width="100%" height="auto" viewBox="0 0 91 82" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-12 h-12 cursor-pointer">
-                    <path d="M21.6641 0.5L34.0859 31.0781L0.5 17.1211V0.5H21.6641Z" fill="#010101" stroke="#DBDBDB"/>
-                    <path d="M90.5 0.5V17.6611L56.9043 31.0996L69.3359 0.5H90.5Z" fill="#010101"  stroke="#DBDBDB"/>
-                    <rect x="35.5" y="0.5" width="20" height="17" fill="#010101" stroke="#DBDBDB"/>
-                    <rect x="0.5" y="32.5" width="21" height="17" fill="#010101" stroke="#DBDBDB"/>
-                    <rect x="69.5" y="32.5" width="21" height="17" fill="#010101" stroke="#DBDBDB"/>
-                    <rect x="35.5" y="32.5" width="20" height="17" fill="#010101" stroke="#DBDBDB"/>
-                    <path d="M21.6641 81.5H0.5V64.3379L34.0947 50.8994L21.6641 81.5Z" fill="#010101" stroke="#DBDBDB"/>
-                    <path d="M90.5 64.3379V81.5H69.3359L56.9043 50.8994L90.5 64.3379Z" fill="#010101" stroke="#DBDBDB"/>
-                    <rect x="35.5" y="64.5" width="20" height="17" fill="#010101" stroke="#DBDBDB"/>
-                    </svg>
+          <svg
+            width="91"
+            height="82"
+            viewBox="0 0 91 82"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-10 w-10"
+          >
+            <path d="M21.6641 0.5L34.0859 31.0781L0.5 17.1211V0.5H21.6641Z" fill="#020617" stroke="#DBDBDB" />
+            <path d="M90.5 0.5V17.6611L56.9043 31.0996L69.3359 0.5H90.5Z" fill="#020617" stroke="#DBDBDB" />
+            <rect x="35.5" y="0.5" width="20" height="17" fill="#020617" stroke="#DBDBDB" />
+            <rect x="0.5" y="32.5" width="21" height="17" fill="#020617" stroke="#DBDBDB" />
+            <rect x="69.5" y="32.5" width="21" height="17" fill="#020617" stroke="#DBDBDB" />
+            <rect x="35.5" y="32.5" width="20" height="17" fill="#020617" stroke="#DBDBDB" />
+            <path d="M21.6641 81.5H0.5V64.3379L34.0947 50.8994L21.6641 81.5Z" fill="#020617" stroke="#DBDBDB" />
+            <path d="M90.5 64.3379V81.5H69.3359L56.9043 50.8994L90.5 64.3379Z" fill="#020617" stroke="#DBDBDB" />
+            <rect x="35.5" y="64.5" width="20" height="17" fill="#020617" stroke="#DBDBDB" />
+          </svg>
+          <span className="font-mono text-sm tracking-wide text-zinc-100">SOL TOKEN LAUNCH PAD</span>
+        </button>
 
-                    <div className="hidden md:flex gap-8">
-                        {navLinks.map((link) => (
-                            link.isExternal && link.href === "/trust" ? (
-                                <Link key={link.name} href={link.href} passHref legacyBehavior>
-                                    <motion.a
-                                        whileHover={{ color: "#ffffff" }}
-                                        className="text-gray-400 hover:text-white transition-colors text-sm font-mono hover:underline underline-offset-4"
-                                    >
-                                        {link.name}
-                                    </motion.a>
-                                </Link>
-                            ) : link.isExternal ? (
-                                <motion.a
-                                    key={link.name}
-                                    href={link.href}
-                                    whileHover={{ color: "#ffffff" }}
-                                    className="text-gray-400 hover:text-white transition-colors text-sm font-mono hover:underline underline-offset-4"
-                                >
-                                    {link.name}
-                                </motion.a>
-                            ) : (
-                                <motion.button
-                                    key={link.name}
-                                    onClick={() => scrollToSection(link.href, false)}
-                                    whileHover={{ color: "#ffffff" }}
-                                    className="text-gray-400 hover:text-white transition-colors text-sm font-mono hover:underline underline-offset-4"
-                                >
-                                    {link.name}
-                                </motion.button>
-                            )
-                        ))}
-                    </div>
+        <div className="hidden items-center gap-7 md:flex">
+          {navLinks.map((link) => (
+            <motion.button
+              key={link.name}
+              onClick={() => scrollToSection(link.href)}
+              whileHover={{ y: -2 }}
+              className="font-mono text-sm text-zinc-300 transition-colors hover:text-white"
+            >
+              {link.name}
+            </motion.button>
+          ))}
+        </div>
 
-                   
-                    <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        className="hidden md:flex items-center gap-2 bg-white hover:bg-gray-100 text-black font-mono py-2 px-6  transition-all duration-200 hover:underline underline-offset-4"
-                    >
-                     Connect Wallet
-                    </motion.button>
+        <div className="hidden items-center gap-3 md:flex">
+          <motion.a
+            href={backendUrl}
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.98 }}
+            className="rounded-full border border-cyan-200/60 bg-cyan-300/90 px-5 py-2 font-mono text-sm font-semibold text-black"
+          >
+            Launch dApp
+          </motion.a>
+        </div>
 
-              
-                    <motion.button
-                        onClick={() => setIsMenuOpen(!isMenuOpen)}
-                        className="md:hidden text-white"
-                    >
-                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                    </motion.button>
-                </div>
+        <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="md:hidden">
+          <svg className="h-6 w-6 text-zinc-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
 
-                {isMenuOpen && (
-                    <motion.div
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="md:hidden pb-4 space-y-2"
-                    >
-                        {navLinks.map((link) => (
-                            link.isExternal && link.href === "/trust" ? (
-                                <Link key={link.name} href={link.href} passHref legacyBehavior>
-                                    <motion.a
-                                        className="block w-full text-left text-gray-400 hover:text-white px-4 py-2 text-sm font-mono hover:underline underline-offset-4"
-                                    >
-                                        {link.name}
-                                    </motion.a>
-                                </Link>
-                            ) : link.isExternal ? (
-                                <motion.a
-                                    key={link.name}
-                                    href={link.href}
-                                    className="block w-full text-left text-gray-400 hover:text-white px-4 py-2 text-sm font-mono hover:underline underline-offset-4"
-                                >
-                                    {link.name}
-                                </motion.a>
-                            ) : (
-                                <motion.button
-                                    key={link.name}
-                                    onClick={() => scrollToSection(link.href, false)}
-                                    className="block w-full text-left text-gray-400 hover:text-white px-4 py-2 text-sm font-mono hover:underline underline-offset-4"
-                                >
-                                    {link.name}
-                                </motion.button>
-                            )
-                        ))}
-                        <motion.button
-                            whileHover={{ scale: 1.02 }}
-                            className="w-full bg-white hover:bg-gray-200 text-black font-mono py-2 px-4  mt-4  hover:underline underline-offset-4"
-                        >
-                            Connect Wallet
-                        </motion.button>
-                        <motion.button
-                            whileHover={{ scale: 1.02 }}
-                            className="w-full bg-white hover:bg-gray-200 text-black font-mono py-2 px-4 mt-2 hover:underline underline-offset-4"
-                        >
-                            Create Token
-                        </motion.button>
-                    </motion.div>
-                )}
-            </div>
-        </motion.nav>
-    )
+      {isMenuOpen && (
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="space-y-2 border-t border-white/10 px-4 py-4 md:hidden"
+        >
+          {navLinks.map((link) => (
+            <button
+              key={link.name}
+              onClick={() => scrollToSection(link.href)}
+              className="block w-full text-left font-mono text-sm text-zinc-300"
+            >
+              {link.name}
+            </button>
+          ))}
+          <a
+            href={backendUrl}
+            className="mt-2 block rounded-full border border-cyan-200/60 bg-cyan-300/90 px-5 py-2 text-center font-mono text-sm font-semibold text-black"
+          >
+            Launch dApp
+          </a>
+        </motion.div>
+      )}
+    </motion.nav>
+  );
 }

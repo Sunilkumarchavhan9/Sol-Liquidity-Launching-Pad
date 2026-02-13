@@ -274,9 +274,9 @@ export function Swap() {
         preflightCommitment : "processed",
       });
       console.log("waiting for conformation...");
-      const confirmation =  connection.confirmTransaction(signature , "confirmed");
+      const confirmation = await connection.confirmTransaction(signature , "confirmed");
       if(confirmation.value.err){
-         throw new Error(`Transaction failed :  ${(await confirmation).value.err}`)
+         throw new Error(`Transaction failed : ${confirmation.value.err}`)
       }
 
       setTxSignature(signature);

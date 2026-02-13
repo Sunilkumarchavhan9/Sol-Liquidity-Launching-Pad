@@ -65,11 +65,11 @@ export function AddLiquidity({ poolAddress, tokenA, tokenB, onDone }: AddLiquidi
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="min-h-screen bg-white flex justify-center items-center p-4"
+                className="app-shell"
             >
-                <div className="w-full max-w-md">
-                    <motion.div 
-                        className="bg-white shadow-lg p-8 border-4 border-black"
+                <div className="w-full max-w-xl">
+                    <motion.div
+                        className="app-card"
                         whileHover={{ y: -5 }}
                         transition={{ type: "spring", stiffness: 300 }}
                     >
@@ -82,41 +82,41 @@ export function AddLiquidity({ poolAddress, tokenA, tokenB, onDone }: AddLiquidi
                             💰
                         </motion.div>
 
-                        <motion.h1 
-                            className="text-3xl font-bold text-center mb-2 text-black"
+                        <motion.h1
+                            className="mb-2 text-center font-mono text-3xl font-bold text-white"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.3 }}
                         >
                             Liquidity Added!
                         </motion.h1>
-                        <p className="text-gray-600 text-center mb-8">Your pool is now active for trading</p>
+                        <p className="mb-8 text-center font-mono text-sm text-zinc-300">Your pool is now active for trading</p>
                         
                         <motion.div
                             initial={{ opacity: 0, y: 10 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ delay: 0.4 }}
-                            className="space-y-4 mb-8 bg-gray-100 p-6 border-2 border-black"
+                            className="mb-8 space-y-4 rounded-2xl border border-white/20 bg-white/5 p-6"
                         >
                             <div>
-                                <p className="text-sm text-gray-600">{tokenA} Deposited</p>
-                                <p className="text-black font-bold text-lg">{amountA} {tokenA}</p>
+                                <p className="text-sm text-zinc-300">{tokenA} Deposited</p>
+                                <p className="text-lg font-bold text-zinc-100">{amountA} {tokenA}</p>
                             </div>
 
                             <div>
-                                <p className="text-sm text-gray-600">{tokenB} Deposited</p>
-                                <p className="text-black font-bold text-lg">{amountB} {tokenB}</p>
+                                <p className="text-sm text-zinc-300">{tokenB} Deposited</p>
+                                <p className="text-lg font-bold text-zinc-100">{amountB} {tokenB}</p>
                             </div>
 
-                            <div className="border-t-2 border-black pt-4">
-                                <p className="text-sm text-gray-600">LP Tokens Received</p>
-                                <p className="text-black font-bold text-lg">{lpTokens} LP</p>
+                            <div className="border-t border-white/20 pt-4">
+                                <p className="text-sm text-zinc-300">LP Tokens Received</p>
+                                <p className="text-lg font-bold text-zinc-100">{lpTokens} LP</p>
                             </div>
 
-                            <div className="bg-gray-200 p-3 border-2 border-black">
-                                <p className="text-xs text-gray-600 mb-2">Fee Earnings</p>
-                                <p className="text-black font-bold">0.3% of all swaps</p>
-                                <p className="text-xs text-gray-600 mt-1">Proportional to your share</p>
+                            <div className="rounded-xl border border-white/20 bg-white/6 p-3">
+                                <p className="mb-2 text-xs text-zinc-300">Fee Earnings</p>
+                                <p className="font-bold text-zinc-100">0.3% of all swaps</p>
+                                <p className="mt-1 text-xs text-zinc-300">Proportional to your share</p>
                             </div>
                         </motion.div>
 
@@ -124,16 +124,16 @@ export function AddLiquidity({ poolAddress, tokenA, tokenB, onDone }: AddLiquidi
                             onClick={onDone}
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
-                            className="w-full bg-black hover:bg-gray-800 text-white font-bold py-3 transition duration-200"
+                            className="app-button-primary w-full py-3"
                         >
-                            ✨ Done
+                            Done
                         </motion.button>
 
                         <motion.p 
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ delay: 0.6 }}
-                            className="text-center text-gray-600 text-xs mt-6"
+                            className="mt-6 text-center text-xs text-zinc-300"
                         >
                             You are now a liquidity provider! Your LP tokens represent your share of the pool. You'll earn {tokenA}/{tokenB} swap fees automatically.
                         </motion.p>
@@ -148,23 +148,23 @@ export function AddLiquidity({ poolAddress, tokenA, tokenB, onDone }: AddLiquidi
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="min-h-screen bg-white flex justify-center items-center p-4"
+            className="app-shell"
         >
-            <div className="w-full max-w-md">
-                <motion.div 
-                    className="bg-white shadow-lg p-8 border-4 border-black"
+            <div className="w-full max-w-xl">
+                <motion.div
+                    className="app-card"
                     whileHover={{ y: -5 }}
                     transition={{ type: "spring", stiffness: 300 }}
                 >
-                    <motion.h1 
-                        className="text-4xl font-bold text-center mb-2 text-black"
+                    <motion.h1
+                        className="text-center font-mono text-4xl font-bold text-white"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.2 }}
                     >
                         Add Liquidity
                     </motion.h1>
-                    <p className="text-gray-600 text-center mb-8">Become a liquidity provider and earn 0.3% fees on all swaps</p>
+                    <p className="mb-8 mt-2 text-center font-mono text-sm text-zinc-300">Become a liquidity provider and earn 0.3% fees on all swaps</p>
                     
                     <motion.div
                         initial={{ opacity: 0, x: -20 }}
@@ -173,28 +173,28 @@ export function AddLiquidity({ poolAddress, tokenA, tokenB, onDone }: AddLiquidi
                         className="space-y-4"
                     >
                         <div>
-                            <label className="block text-sm font-medium text-black mb-2">{tokenA} Amount</label>
+                            <label className="mb-2 block text-sm font-medium text-zinc-200">{tokenA} Amount</label>
                             <input 
                                 type="number" 
                                 placeholder="0.00"
                                 value={amountA}
                                 onChange={(e) => setAmountA(e.target.value)}
-                                className="w-full px-4 py-3 bg-gray-100 border-2 border-black text-black placeholder-gray-400 focus:outline-none focus:bg-gray-50 transition"
+                                className="app-input"
                             />
                         </div>
 
                         <div className="text-center py-2">
-                            <span className="text-2xl text-black font-bold">+</span>
+                            <span className="text-2xl font-bold text-zinc-200">+</span>
                         </div>
 
                         <div>
-                            <label className="block text-sm font-medium text-black mb-2">{tokenB} Amount</label>
+                            <label className="mb-2 block text-sm font-medium text-zinc-200">{tokenB} Amount</label>
                             <input 
                                 type="number" 
                                 placeholder="0.00"
                                 value={amountB}
                                 onChange={(e) => setAmountB(e.target.value)}
-                                className="w-full px-4 py-3 bg-gray-100 border-2 border-black text-black placeholder-gray-400 focus:outline-none focus:bg-gray-50 transition"
+                                className="app-input"
                             />
                         </div>
 
@@ -202,11 +202,11 @@ export function AddLiquidity({ poolAddress, tokenA, tokenB, onDone }: AddLiquidi
                             <motion.div 
                                 initial={{ opacity: 0, y: 10 }}
                                 animate={{ opacity: 1, y: 0 }}
-                                className="bg-gray-100 p-4 border-2 border-black mt-4"
+                                className="mt-4 rounded-xl border border-white/20 bg-white/6 p-4"
                             >
-                                <p className="text-sm text-gray-600">LP Tokens You'll Receive</p>
-                                <p className="text-2xl font-bold text-black">{calculateLPTokens(amountA, amountB)} LP</p>
-                                <p className="text-xs text-gray-600 mt-2">You can withdraw this anytime + earned fees</p>
+                                <p className="text-sm text-zinc-300">LP Tokens You'll Receive</p>
+                                <p className="text-2xl font-bold text-zinc-100">{calculateLPTokens(amountA, amountB)} LP</p>
+                                <p className="mt-2 text-xs text-zinc-300">You can withdraw this anytime + earned fees</p>
                             </motion.div>
                         )}
                     </motion.div>
@@ -216,14 +216,14 @@ export function AddLiquidity({ poolAddress, tokenA, tokenB, onDone }: AddLiquidi
                         disabled={isLoading || !amountA || !amountB}
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
-                        className="w-full mt-8 bg-pink-500 hover:bg-pink-600 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold py-3 transition duration-200 flex items-center justify-center gap-2 rounded-2xl border border-pink-400"
+                        className="app-button-primary mt-8 flex w-full items-center justify-center gap-2 py-3 disabled:cursor-not-allowed disabled:opacity-50"
                     >
                         {isLoading ? (
                             <>
                                 <motion.div 
                                     animate={{ rotate: 360 }}
                                     transition={{ repeat: Infinity, duration: 1 }}
-                                    className="w-5 h-5 border-2 border-white border-t-transparent"
+                                    className="h-5 w-5 rounded-full border-2 border-black border-t-transparent"
                                 />
                                 Adding...
                             </>
@@ -236,7 +236,7 @@ export function AddLiquidity({ poolAddress, tokenA, tokenB, onDone }: AddLiquidi
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.5 }}
-                        className="text-center text-gray-500 text-xs mt-6"
+                        className="mt-6 text-center text-xs text-zinc-300"
                     >
                         Equal value of both tokens is required. You'll receive LP tokens representing your share of the pool.
                     </motion.p>

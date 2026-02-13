@@ -60,27 +60,27 @@ export function TokenLaunchpad({onTokenCreate}: TokenLaunchpadProps){
     }
 
     return (
-        <motion.div 
+        <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="min-h-screen bg-white flex justify-center items-center p-4"
+            className="app-shell"
         >
-            <div className="w-full max-w-md">
-                <motion.div 
-                    className="bg-white shadow-lg p-8 border-4 border-black"
+            <div className="w-full max-w-xl">
+                <motion.div
+                    className="app-card"
                     whileHover={{ y: -5 }}
                     transition={{ type: "spring", stiffness: 300 }}
                 >
-                    <motion.h1 
-                        className="text-4xl font-bold text-center mb-2 text-black"
+                    <motion.h1
+                        className="text-center font-mono text-4xl font-bold text-white"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.2 }}
                     >
                         Token Launchpad
                     </motion.h1>
-                    <p className="text-gray-600 text-center mb-8">Create your Solana token in seconds</p>
+                    <p className="mb-8 mt-2 text-center font-mono text-sm text-zinc-300">Create your Solana token in seconds</p>
                     
                     <div className="space-y-4">
                         <motion.div
@@ -88,13 +88,13 @@ export function TokenLaunchpad({onTokenCreate}: TokenLaunchpadProps){
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: 0.3 }}
                         >
-                            <label className="block text-sm font-medium text-black mb-2">Token Name</label>
+                            <label className="mb-2 block text-sm font-medium text-zinc-200">Token Name</label>
                             <input 
                                 type='text' 
                                 placeholder='e.g., MyToken'
                                 value={tokenName}
                                 onChange={(e) => setTokenName(e.target.value)}
-                                className='w-full px-4 py-3 bg-gray-100 border-2 border-black text-black placeholder-gray-400 focus:outline-none focus:bg-gray-50 transition'
+                                className='app-input'
                             />
                         </motion.div>
 
@@ -103,13 +103,13 @@ export function TokenLaunchpad({onTokenCreate}: TokenLaunchpadProps){
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: 0.4 }}
                         >
-                            <label className="block text-sm font-medium text-black mb-2">Token Symbol</label>
+                            <label className="mb-2 block text-sm font-medium text-zinc-200">Token Symbol</label>
                             <input 
                                 type='text' 
                                 placeholder='e.g., MT'
                                 value={tokenSymbol}
                                 onChange={(e) => setTokenSymbol(e.target.value)}
-                                className='w-full px-4 py-3 bg-gray-100 border-2 border-black text-black placeholder-gray-400 focus:outline-none focus:bg-gray-50 transition'
+                                className='app-input'
                             />
                         </motion.div>
 
@@ -118,13 +118,13 @@ export function TokenLaunchpad({onTokenCreate}: TokenLaunchpadProps){
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: 0.5 }}
                         >
-                            <label className="block text-sm font-medium text-black mb-2">Image URL</label>
+                            <label className="mb-2 block text-sm font-medium text-zinc-200">Image URL</label>
                             <input 
                                 type='text' 
                                 placeholder='https://example.com/image.png'
                                 value={imageUrl}
                                 onChange={(e) => setImageUrl(e.target.value)}
-                                className='w-full px-4 py-3 bg-gray-100 border-2 border-black text-black placeholder-gray-400 focus:outline-none focus:bg-gray-50 transition'
+                                className='app-input'
                             />
                         </motion.div>
 
@@ -133,13 +133,13 @@ export function TokenLaunchpad({onTokenCreate}: TokenLaunchpadProps){
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: 0.6 }}
                         >
-                            <label className="block text-sm font-medium text-black mb-2">Initial Supply</label>
+                            <label className="mb-2 block text-sm font-medium text-zinc-200">Initial Supply</label>
                             <input 
                                 type='text' 
                                 placeholder='1000000'
                                 value={initialSupply}
                                 onChange={(e) => setInitialSupply(e.target.value)}
-                                className='w-full px-4 py-3 bg-gray-100 border-2 border-black text-black placeholder-gray-400 focus:outline-none focus:bg-gray-50 transition'
+                                className='app-input'
                             />
                         </motion.div>
                     </div>
@@ -149,19 +149,19 @@ export function TokenLaunchpad({onTokenCreate}: TokenLaunchpadProps){
                         disabled={isLoading || !wallet.publicKey}
                         whileHover={{ scale: 1.02 }}
                         whileTap={{ scale: 0.98 }}
-                        className='w-full mt-8 bg-black hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed text-white font-bold py-3 transition duration-200 flex items-center justify-center gap-2'
+                        className='app-button-primary mt-8 flex w-full items-center justify-center gap-2 py-3 disabled:cursor-not-allowed disabled:opacity-50'
                     >
                         {isLoading ? (
                             <>
                                 <motion.div 
                                     animate={{ rotate: 360 }}
                                     transition={{ repeat: Infinity, duration: 1 }}
-                                    className="w-5 h-5 border-2 border-white border-t-transparent"
+                                    className="h-5 w-5 rounded-full border-2 border-black border-t-transparent"
                                 />
                                 Creating...
                             </>
                         ) : (
-                            '✨ Create Token'
+                            'Create Token'
                         )}
                     </motion.button>
 
@@ -169,7 +169,7 @@ export function TokenLaunchpad({onTokenCreate}: TokenLaunchpadProps){
                         <motion.p 
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
-                            className="text-center text-red-600 text-sm mt-4"
+                            className="mt-4 text-center text-sm text-amber-300"
                         >
                             Please connect your wallet first
                         </motion.p>
